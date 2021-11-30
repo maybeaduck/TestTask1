@@ -18,4 +18,8 @@ public class StaticData : ScriptableObject
     public Color showMaskColor;
     public float showMaskDuration;
     public AnimationCurve showMaskCurve;
+    public float hideFadeValue;
+    public float hideFadeDuration;
+    public float showFadeValue;
+    public float showFadeDuration;
 }

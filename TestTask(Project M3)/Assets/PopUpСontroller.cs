@@ -9,7 +9,18 @@ public class PopUpСontroller : MonoBehaviour
 {
     public List<PopUp> PopUps = new List<PopUp>();
     public Image Mask;
+    public Transform popUpContainer;
+    public PopUp popUpData;
     
+    public void SetPopUp(ItemActor item,int count)
+    {
+        var popUp = Instantiate(popUpData, popUpContainer);
+        var a = Instantiate(item, popUp.ItemContainer);
+            a.Count.text = count.ToString();
+            popUp.ActiveItem = a;
+            PopUps.Add(popUp);
+            popUp.Show();
+    }
     void Start()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -19,7 +30,6 @@ public class PopUpСontroller : MonoBehaviour
             {
                 PopUps.Add(popUp);    
             }
-            
         }
         
     }
@@ -31,10 +41,19 @@ public class PopUpСontroller : MonoBehaviour
             DisableLastPopUp();   
         }
     }
-
+    
     private void Disable()
     {
         Mask.gameObject.SetActive(false);
+    }
+
+    public void RemovePopUp(PopUp popUp)
+    {
+        PopUps.Remove(popUp);
+        if (PopUps.Count == 0)
+        {
+            MaskHide();
+        }
     }
     public void MaskHide()
     {
@@ -61,6 +80,7 @@ public class PopUpСontroller : MonoBehaviour
                 {
                     item.Hide();
                     oneDisable = true;
+                    PopUps.Remove(item);
                     continue;
                 }
 

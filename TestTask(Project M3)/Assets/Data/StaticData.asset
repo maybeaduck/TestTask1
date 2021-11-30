@@ -152,3 +152,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  hideFadeValue: 0
+  hideFadeDuration: 0.3
+  showFadeValue: 1
+  showFadeDuration: 0.3
